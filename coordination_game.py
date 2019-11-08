@@ -82,12 +82,19 @@ class TransitionMatrix(object):
         plt.plot(mean_dynamic)
         plt.show()
 
+    def plot_states(self, a0, list_of_ticks):
+        for tick in list_of_ticks:
+            plt.plot(self.get_state_tick_k(a0, tick))
+        plt.show()
+
 
 def main():
     m = TransitionMatrix(100)
     a0 = np.zeros(m.get_transition_matrix().shape[0])
-    a0[int((len(a0)-1) / 2)] = 1
-    m.plot_mean_dynamics(a0, 1000)
+    # a0[int((len(a0)-1) / 2)] = 1
+    a0[40] = 1
+    # m.plot_mean_dynamics(a0, 1000)
+    m.plot_states(a0, [100, 200, 300, 400, 500])
 
 
 if __name__ == '__main__':
